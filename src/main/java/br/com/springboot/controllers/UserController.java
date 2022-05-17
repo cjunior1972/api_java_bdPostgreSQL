@@ -57,12 +57,12 @@ public class UserController {
     @GetMapping("/list/{id}")
     public List<User> listMoreThan(@PathVariable("id") Long id) {
         System.out.println("Lista maior que id:" + id);
-        // return this.userRepository.findAllMoreThan(id); aqui eu uso o sql injetado no
-        // springboot
-        return this.userRepository.findByIdGreaterThan(id); // aqui eu uso recurso do próprio springboot
+        return this.userRepository.findAllMoreThan(id); // aqui eu uso o sql injetado no springboot
+        // return this.userRepository.findByIdGreaterThan(id); // aqui eu uso recurso do
+        // próprio springboot
     }
 
-    /* lista um id específico, do banco de dados */
+    /* lista um nome específico, do banco de dados */
     @GetMapping("/findByName/{name}")
     public List<User> findByName(@PathVariable("name") String name) {
         System.out.println("Pesquisa por nome:" + name);

@@ -24,20 +24,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    /*
-     * buscando uma lista na memória
-     * 
-     * @GetMapping("/{id}")
-     * public User user(@PathVariable("id") Long id) {
-     * System.out.println("O id é " + id);
-     * Optional<User> userFind = users.stream().filter((user) -> user.getId() ==
-     * id).findFirst();
-     * if (userFind.isPresent()) {
-     * return userFind.get();
-     * }
-     * return null;
-     * }
-     */
     @GetMapping("/{id}")
     public User user(@PathVariable("id") Long id) {
         System.out.println("O id é " + id);
@@ -46,9 +32,7 @@ public class UserController {
         if (userFind.isPresent()) {
             return userFind.get();
         }
-
         return null;
-
     }
 
     // recenendo os dados da API / TELA e alimentando banco de dados, gravando o
@@ -61,15 +45,6 @@ public class UserController {
         return user;
     }
     // fim POST ----------------------------------------------------------------
-
-    /*
-     * lista de usuários da memória
-     * 
-     * @GetMapping("/list")
-     * public List<User> list() {
-     * return users;
-     * }
-     */
 
     // lista todos do banco de dados
     @GetMapping("/list")

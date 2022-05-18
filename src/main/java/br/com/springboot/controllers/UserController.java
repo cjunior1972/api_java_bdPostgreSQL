@@ -70,12 +70,12 @@ public class UserController {
     }
 
     /* lista contém parte do nome, do banco de dados */
-    @GetMapping("/findByNameLikeUsers/{name}")
-    public List<User> findByNameLikeUsers(@PathVariable("name") String name) {
+    @GetMapping("/findByNameL/{name}")
+    public List<User> findByNameL(@PathVariable("name") String name) {
         System.out.println("Pesquisa contém o nome:" + name);
         // return this.userRepository.findAllMoreThan(id); aqui eu uso o sql injetado no
         // springboot
-        return this.userRepository.findByNameLikeUsers(name); // aqui eu uso recurso do próprio springboot
+        return this.userRepository.findByNameLike(name); // aqui eu uso recurso do próprio springboot
     }
 
 }

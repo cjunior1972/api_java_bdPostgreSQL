@@ -14,14 +14,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u from User u where u.id >= :id order by u.id")
     public List<User> findAllMoreThan(@Param("id") Long id);
 
-    // aqui uso recurso do próprio springboot
+    // Id maior que - aqui uso recurso do próprio springboot
     public List<User> findByIdGreaterThan(Long id);
 
-    // pesquisando pelo nome
+    // Name - pesquisando pelo nome
     public List<User> findByNameIgnoreCase(String name);
 
-    // aqui uso recurso do sql injetado no springboot
-    @Query("SELECT u from User u where u.name like :name order by u.name")
-    public List<User> findByNameLikeUsers(@Param("name") String name);
+    // Name - aqui uso recurso do sql injetado no springboot, com a cláusula contém
+    @Query("SELECT u from User u where u.name like %:name% order by u.name")
+    public List<User> findByNameLike(@Param("name") String name);
 
 }

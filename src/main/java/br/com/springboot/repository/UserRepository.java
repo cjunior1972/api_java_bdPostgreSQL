@@ -23,6 +23,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // Name - aqui uso recurso do sql injetado no springboot, com a cláusula contém
     @Query("SELECT u from User u where u.name like %:name% order by u.name")
     public List<User> findByNameLike(@Param("name") String name);
-    // findBy NOME_DO_CAMPO Like
+    // MÉTODO: findBy NOME_DO_CAMPO Like
 
 }

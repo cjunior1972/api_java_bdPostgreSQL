@@ -19,8 +19,6 @@ import br.com.springboot.repository.UserRepository;
 @RequestMapping("/users")
 public class UserController {
 
-    private List<User> users = new ArrayList<>();
-
     @Autowired
     private UserRepository userRepository;
 
@@ -68,7 +66,16 @@ public class UserController {
         System.out.println("Pesquisa por nome:" + name);
         // return this.userRepository.findAllMoreThan(id); aqui eu uso o sql injetado no
         // springboot
-        return this.userRepository.findByName(name); // aqui eu uso recurso do próprio springboot
+        return this.userRepository.findByNameIgnoreCase(name); // aqui eu uso recurso do próprio springboot
+    }
+
+    /* lista contém parte do nome, do banco de dados */
+    @GetMapping("/findByNameLikeUsers/{name}")
+    public List<User> findByNameLikeUsers(@PathVariable("name") String name) {
+        System.out.println("Pesquisa contém o nome:" + name);
+        // return this.userRepository.findAllMoreThan(id); aqui eu uso o sql injetado no
+        // springboot
+        return this.userRepository.findByNameLikeUsers(name); // aqui eu uso recurso do próprio springboot
     }
 
 }

@@ -45,14 +45,14 @@ public class UserController {
     // fim POST ----------------------------------------------------------------
 
     // lista todos do banco de dados
-    @GetMapping("/list")
+    @GetMapping("/listar")
     public List<User> list() {
         System.out.println("Lista todos do banco de dados");
         return this.userRepository.findAll();
     }
 
     /* lista um id específico, do banco de dados */
-    @GetMapping("/list/{id}")
+    @GetMapping("/listarId/{id}")
     public List<User> listMoreThan(@PathVariable("id") Long id) {
         System.out.println("Lista maior que id:" + id);
         return this.userRepository.findAllMoreThan(id); // aqui eu uso o sql injetado no springboot
@@ -61,7 +61,7 @@ public class UserController {
     }
 
     /* lista um nome específico, do banco de dados */
-    @GetMapping("/findByName/{name}")
+    @GetMapping("/pesquisarNome/{name}")
     public List<User> findByName(@PathVariable("name") String name) {
         System.out.println("Pesquisa por nome:" + name);
         // return this.userRepository.findAllMoreThan(id); aqui eu uso o sql injetado no
